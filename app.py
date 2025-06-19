@@ -1,20 +1,18 @@
 import streamlit as st
 import joblib
-import numpy as np
 
-# Load the model
-model = joblib.load('homeprice_model.joblib')
+# Load the trained model
+model = joblib.load('home_price_model.pkl')
 
-# App title
-st.title("Home Price Prediction")
+st.title("🏠 Home Price Prediction App")
+
+st.markdown("Enter the details below to predict the price of a house:")
 
 # Input fields
-area = st.number_input("Enter Area (in sq ft)", min_value=100)
-bedrooms = st.number_input("Enter Number of Bedrooms", min_value=1)
-age = st.number_input("Enter Age of the House (in years)", min_value=0)
+area = st.number_input("Area (in square feet)", min_value=100, max_value=10000, value=1500)
 
-# Predict button
+# Prediction
 if st.button("Predict Price"):
-    input_data = np.array([[area, bedrooms, age]])
-    prediction = model.predict(input_data)[0]
-    st.success(f"Estimated Home Price: ₹ {round(prediction, 2)}")
+    input_data = [[area]]
+    prediction = model.predict(input_data)
+    st.success(f"🏡 Estimated Home Price: ₹{prediction[0]:,.2f}"
