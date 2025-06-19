@@ -8,7 +8,7 @@ st.title("🏠 Home Price Prediction App")
 
 st.markdown("Enter the details below to predict the price of a house:")
 
-# Input fields
+# Input field
 area = st.number_input("Area (in square feet)", min_value=100, max_value=10000, value=1500)
 
 # Prediction
