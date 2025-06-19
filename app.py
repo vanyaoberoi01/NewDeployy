@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Load the trained model
-model = joblib.load('home_price_model.pkl')
+model = joblib.load('home_price_model.joblib')
 
 st.title("🏠 Home Price Prediction App")
 
